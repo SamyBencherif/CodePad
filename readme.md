@@ -66,6 +66,8 @@ while ploop():
 W,H = size()
 cursor(0, H-1)
 ```
+### output
+![](screenshots/codepad.png)
 
 ## Quick Reference
 
@@ -116,7 +118,7 @@ place(-3,4,"Wow\0\0cool")    A more advanced version of `write`.
 
 ## Screenshots
 
-### codepad demo
+### codepad demo (above)
 ![](screenshots/codepad.png)
 
 ### codepad shell
