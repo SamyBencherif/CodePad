@@ -1,0 +1,87 @@
+Help on module codepad:
+
+NAME
+    codepad
+
+FUNCTIONS
+    call(c)
+        Execute an ANSI escape code
+    
+    clear()
+        Clear the screen.
+    
+    color(x)
+        Set the foreground text color (FG) or the cell background color (BG).
+        
+        Parameters are added together. Ex:
+        color(fg+red+brite)
+        color(bg+blue)
+        color(reset)
+        
+        `brite` serves to expose a lighter version of the original palette, allowing for
+        16 colors total.
+        
+        In general the following sums are acceptable:
+        SCOLOR+MODE+brite
+        COLOR+MODE
+        reset
+        
+        where COLOR is black, red, green, yellow, blue, magenta, cyan, white, or reset
+        SCOLOR stands for Strict Color, it is the same as COLOR except it excludes reset
+        MODE is either fg or bg
+        
+        As a special case reset can be called without a MODE, in which case it will reset
+        both the fg and the bg. And of course reset cannot be brightened.
+    
+    cursor(x, y, delta=False)
+    
+    nl()
+        Reset color and write newline.
+    
+    pix(x, y, c)
+        Shorthand for cursor(x,y); color(bg+c); write(" ")
+    
+    place(x, y, s)
+        Puts a string on screen with some special features.
+        
+        (1) Parts of the string that go past the screen boundary are clipped
+        (2) Newlines stay on the same column without overwritting preceeding content
+        (3) Character \0 can be used as a transparent value
+    
+    ploop()
+        Place this in the condition of the main loop.
+        Ex:
+        while ploop():
+            write("Prompt value: " + promptValue + " " + frameNumber + "\n:")
+        
+        It will provide one prompt per frame and leave the collected input in a variable
+        called promptValue.
+    
+    prompt()
+        Get the prompt input that came before this frame.
+    
+    size()
+    
+    write(c)
+        Write character to cursor location
+
+DATA
+    bg = 40
+    black = 0
+    blue = 4
+    brite = 60
+    cyan = 6
+    fg = 30
+    frameNumber = 0
+    green = 2
+    magenta = 5
+    promptValue = ''
+    red = 1
+    reset = 8
+    white = 7
+    yellow = 3
+
+FILE
+    /Users/samie/playground/codepad/codepad.py
+
+
